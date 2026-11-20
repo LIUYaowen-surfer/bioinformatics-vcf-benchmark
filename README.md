@@ -11,7 +11,7 @@ Only final variant identity and rank are scored. There is no LLM judge, process 
 | [task_01](task_01/README.md) | SnpEff Example 1: Coding variants | GRCh37 | 743,154 records on chromosomes 7 and 17 | 17 members; 3 affected siblings |
 | [task_02](task_02/README.md) | Exomiser Pfeiffer quartet | hg19 / b37 | 300,036 records in the actual quartet file | Affected daughter and 3 unaffected relatives |
 
-These record counts were measured from the downloaded files, not inferred from generic descriptions of the tutorials. Both causal alleles and their sample genotypes have been checked against the real VCFs. See [verification.md](verification.md) for evidence and executed checks.
+These record counts were measured from the downloaded files, not inferred from generic descriptions of the tutorials. Both causal alleles and their sample genotypes have been checked against the real VCFs.
 
 ## Repository structure
 
@@ -23,7 +23,6 @@ These record counts were measured from the downloaded files, not inferred from g
 - `scripts/evaluate.py`: deterministic single-task and two-task scoring.
 - `scripts/prepare_inputs.py`: verified source-to-input preparation, with no variant prioritization.
 - `scripts/test_benchmark.py`: scoring and validation regression tests.
-- `verification.md`, `test_results.json`: completed source audit and actual test results; evaluator only.
 
 Raw VCFs, source archives and large analysis databases are downloaded separately. No synthetic replacement cases are supplied. Unit-test fixtures only exercise scoring/normalization and are not additional tasks.
 
@@ -133,7 +132,7 @@ Overall Top-1 Accuracy and Recall@5 are the same equal-weight arithmetic means. 
 
 ## Tests and limitations
 
-Run `python scripts/test_benchmark.py`. The executed results in [test_results.json](test_results.json) include ranks 1/2/5/10, absent alleles, gene-only matches, empty output, aliases, malformed JSON, duplicate candidates and JSON keys, indel normalization and byte-identical repeated scoring. These are evaluator tests, not Agent performance measurements.
+Run `python scripts/test_benchmark.py`. The tests cover ranks 1/2/5/10, absent alleles, gene-only matches, empty output, aliases, malformed JSON, duplicate candidates and JSON keys, indel normalization and byte-identical repeated scoring. These are evaluator tests, not Agent performance measurements.
 
 - Both examples contain known disease variants inserted by their authors into background data. They test variant localization and prioritization; they do **not** establish real-world clinical diagnostic ability.
 - There are only two cases and one reference allele per case: no statistical generalization, compound-heterozygous pair scoring, multiple diagnoses or structural-variant benchmark is claimed.
