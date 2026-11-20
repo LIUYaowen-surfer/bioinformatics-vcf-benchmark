@@ -1,0 +1,250 @@
+{
+  "benchmark": "bioinformatics-vcf-benchmark",
+  "version": "0.1.0",
+  "task_ids": [
+    "task_01",
+    "task_02"
+  ],
+  "max_candidates": 10,
+  "config_format": "JSON syntax, a YAML 1.2 subset; parsed using Python json so no YAML dependency is required.",
+  "tasks": {
+    "task_01": {
+      "assembly": "GRCh37",
+      "reference": "task_01/reference.json",
+      "weight": 0.5,
+      "inputs": [
+        {
+          "role": "vcf",
+          "source_path": "protocols/ex1.vcf",
+          "download_url": "https://downloads.sourceforge.net/project/snpeff/protocols.zip",
+          "sha256": "ed1d589c61a10744dfbc39f16cee11553bcf617888782720fb829fc680a6125d"
+        },
+        {
+          "role": "pedigree",
+          "source_path": "protocols/pedigree.tfam",
+          "download_url": "https://downloads.sourceforge.net/project/snpeff/protocols.zip",
+          "sha256": "36f781af9ac2f0107c16fe4cffeddfe2223164a9a86a42e986fd673b6e96cabb"
+        }
+      ],
+      "agent_inputs": [
+        "prompt.md",
+        "input/variants.vcf",
+        "input/family.ped",
+        "input/case.json"
+      ],
+      "case": {
+        "affected_samples": [
+          "NA12879",
+          "NA12885",
+          "NA12886"
+        ],
+        "unaffected_samples": [
+          "NA12877",
+          "NA12878",
+          "NA12880",
+          "NA12881",
+          "NA12882",
+          "NA12883",
+          "NA12884",
+          "NA12887",
+          "NA12888",
+          "NA12889",
+          "NA12890",
+          "NA12891",
+          "NA12892",
+          "NA12893"
+        ],
+        "inheritance": "Autosomal recessive (author-specified working model).",
+        "phenotypes": [],
+        "clinical_context": "Three affected siblings in a 17-member family; other members are unaffected. No additional structured clinical observations are supplied. Treat missing genotypes as unknown, not homozygous reference."
+      }
+    },
+    "task_02": {
+      "assembly": "hg19",
+      "reference": "task_02/reference.json",
+      "weight": 0.5,
+      "inputs": [
+        {
+          "role": "vcf",
+          "source_path": "Pfeiffer-quartet.vcf.gz",
+          "download_url": "https://raw.githubusercontent.com/exomiser/Exomiser/98f4e0b6f2f3f5bf790a9f955808c98968559996/exomiser-cli/src/main/resources/vcf/Pfeiffer-quartet.vcf.gz",
+          "sha256": "db5fa80abb740672405bd57a5fc3daf1748f373e3f2589310fd3a5d9053b17b7"
+        },
+        {
+          "role": "pedigree",
+          "source_path": "Pfeiffer-quartet.ped",
+          "download_url": "https://raw.githubusercontent.com/exomiser/Exomiser/98f4e0b6f2f3f5bf790a9f955808c98968559996/exomiser-cli/src/main/resources/vcf/Pfeiffer-quartet.ped",
+          "sha256": "4e357bcdab7e79dd9e643a2a0cba5b739030fa13d39b21340c0a54cd1ce0ae64"
+        },
+        {
+          "role": "phenotype_source",
+          "source_path": "test-analysis-multisample.yml",
+          "download_url": "https://raw.githubusercontent.com/exomiser/Exomiser/98f4e0b6f2f3f5bf790a9f955808c98968559996/exomiser-cli/src/main/resources/examples/test-analysis-multisample.yml",
+          "sha256": "2dbb35b7b9a736c2e3230950ce533cacf93278d6760437930e2dc8aa258dc234"
+        }
+      ],
+      "agent_inputs": [
+        "prompt.md",
+        "input/variants.vcf",
+        "input/family.ped",
+        "input/case.json"
+      ],
+      "case": {
+        "proband": "ISDBM322017",
+        "affected_samples": [
+          "ISDBM322017"
+        ],
+        "unaffected_samples": [
+          "ISDBM322016",
+          "ISDBM322018",
+          "ISDBM322015"
+        ],
+        "inheritance": "Autosomal dominant (author-specified working model); allow a de novo allele.",
+        "phenotypes": [
+          {
+            "id": "HP:0001156",
+            "label": "Brachydactyly"
+          },
+          {
+            "id": "HP:0001363",
+            "label": "Craniosynostosis"
+          },
+          {
+            "id": "HP:0011304",
+            "label": "Broad thumb"
+          },
+          {
+            "id": "HP:0010055",
+            "label": "Broad hallux"
+          }
+        ],
+        "clinical_context": "Affected daughter, unaffected father, mother and brother. Phenotype terms are from the authors' family-analysis example, not the separate singleton phenopacket."
+      }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "variants"
+    ],
+    "properties": {
+      "variants": {
+        "type": "array",
+        "minItems": 0,
+        "maxItems": 10,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "chrom",
+            "pos",
+            "ref",
+            "alt"
+          ],
+          "properties": {
+            "chrom": {
+              "type": "string"
+            },
+            "pos": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "ref": {
+              "type": "string",
+              "pattern": "^[ACGTacgt]+$"
+            },
+            "alt": {
+              "type": "string",
+              "pattern": "^[ACGTacgt]+$"
+            },
+            "gene": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    }
+  },
+  "semantic_validation": [
+    "Reject duplicate JSON keys, non-finite constants, floating-point/bool/string positions and unknown fields.",
+    "Primary chromosome aliases 1-22/X/Y/M/MT are normalized; other contig identifiers are preserved exactly. Allele case is normalized.",
+    "One ALT per candidate; symbolic alleles and breakends unsupported.",
+    "Trim common allele padding; left-align indels using the supplied matching indexed FASTA.",
+    "Indels require --fasta; reject duplicates after normalization; do not silently deduplicate."
+  ],
+  "metrics": {
+    "primary": "overall_mrr",
+    "task": [
+      "top1_accuracy",
+      "recall_at_5",
+      "mrr",
+      "gene_level_accuracy"
+    ],
+    "aggregation": "Arithmetic mean over exactly two tasks. Single-task output has overall=null.",
+    "gene_level_accuracy": "Top-1 reported gene-symbol match, case-insensitive. null if gene omitted; 0 for empty list. Does not independently verify annotation, and never changes variant scores.",
+    "invalid_output": "Exit 2, structured error on stderr, no numeric scores. Fix formatting before leaderboard ingestion; no silent dropping of a task."
+  },
+  "environment": {
+    "required": [
+      {
+        "tool": "Python",
+        "minimum_version": "3.11",
+        "recommended_version": "3.12",
+        "tested_version": "3.14.6",
+        "packages": "standard library only"
+      }
+    ],
+    "agent_optional": [
+      {
+        "tool": "bcftools",
+        "recommended_version": "1.22",
+        "url": "https://samtools.github.io/bcftools/bcftools.html"
+      },
+      {
+        "tool": "pysam",
+        "recommended_version": "0.24.1",
+        "url": "https://pysam.readthedocs.io/en/stable/installation.html"
+      },
+      {
+        "tool": "SnpEff",
+        "recommended_version": "5.2",
+        "database": "GRCh37.75 or a documented compatible GRCh37 database",
+        "url": "https://pcingola.github.io/SnpEff/download/"
+      },
+      {
+        "tool": "Exomiser",
+        "recommended_version": "15.1.1",
+        "java": "21 or above",
+        "url": "https://exomiser.readthedocs.io/en/latest/installation.html"
+      },
+      {
+        "tool": "VEP / ANNOVAR / R / other tools",
+        "recommended_version": "Optional alternatives; record exact installed version and database release."
+      }
+    ],
+    "resources": [
+      {
+        "name": "GRCh37 primary-assembly FASTA and .fai",
+        "requirement": "Needed for sequence-aware normalization of any submitted indel; also useful for Agent annotation. No liftover.",
+        "example_url": "https://ftp.ensembl.org/pub/grch37/release-75/fasta/homo_sapiens/dna/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa.gz"
+      },
+      {
+        "name": "GRCh37 annotation cache/database",
+        "requirement": "For the chosen annotator; match its version and assembly."
+      },
+      {
+        "name": "Frequency, ClinVar, HPO and phenotype databases",
+        "requirement": "Optional analysis resources. Freeze versions/checksums across compared Agents. For Exomiser use compatible hg19 and phenotype bundles."
+      }
+    ],
+    "note": "Proposed analysis environment, not an installed or integration-tested full bioinformatics image. Only benchmark utilities and source preparation were executed."
+  },
+  "isolation": {
+    "input_profile": "gt_only_v1",
+    "policy": "Prepare a new external workspace. Mount only prepared inputs and general tools/databases. Withhold all repository files, raw source archives, author results, reference.json and evaluator logs.",
+    "network": "For formal isolated evaluation, disable general web/source browsing after staging resources. Record resource access policy for each run.",
+    "enforcement": "External runner/container/OS responsibility; separate directories alone do not restrict filesystem access."
+  }
+}

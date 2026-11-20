@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+downloads/
+results/
+*.vcf
+*.vcf.gz
+*.vcf.gz.tbi
+*.zip
+*.fa
+*.fasta
+*.fai

@@ -1,0 +1,57 @@
+{
+  "task_id": "task_01",
+  "assembly": "GRCh37",
+  "causal_variants": [
+    {
+      "chrom": "7",
+      "pos": 117227832,
+      "ref": "G",
+      "alt": "T",
+      "gene": "CFTR"
+    }
+  ],
+  "source": {
+    "type": "author_provided",
+    "url": "https://pcingola.github.io/SnpEff/examples/",
+    "section": "Example 1: Coding variants; Step 3 final filtering output",
+    "protein_consequence": "p.Gly542*",
+    "author_result_file": "protocols/ex1.filtered.vcf",
+    "author_result_sha256": "f25a4c8097f2deed94874cd51bb0222ebe4254821f13f13678c8e988452726c5",
+    "evidence_summary": "Official final filtering output identifies the stop-gained CFTR allele as the known cystic fibrosis variant; the supplied result file contains it."
+  },
+  "verification": {
+    "status": "verified",
+    "variant_records": 743154,
+    "sample_count": 17,
+    "sample_genotypes": {
+      "NA12877": "1/0",
+      "NA12878": "1/0",
+      "NA12879": "1/1",
+      "NA12880": ".",
+      "NA12881": ".",
+      "NA12882": "1/0",
+      "NA12883": "1/0",
+      "NA12884": "1/0",
+      "NA12885": "1/1",
+      "NA12886": "1/1",
+      "NA12887": ".",
+      "NA12888": "1/0",
+      "NA12889": "1/0",
+      "NA12890": ".",
+      "NA12891": ".",
+      "NA12892": "1/0",
+      "NA12893": "."
+    },
+    "headers": [
+      "##source_GENOME_REFERENCE=NCBI build 37"
+    ],
+    "checked_on": "2026-11-17",
+    "input_vcf_sha256": "ed1d589c61a10744dfbc39f16cee11553bcf617888782720fb829fc680a6125d",
+    "reference_base_check": {
+      "provider": "UCSC Genome Browser sequence API",
+      "assembly": "hg19",
+      "result": "G",
+      "url": "https://api.genome.ucsc.edu/getData/sequence?genome=hg19;chrom=chr7;start=117227831;end=117227832"
+    }
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "checked_on": "2026-11-17",
+  "python_version": "3.14.6",
+  "tests_run": 22,
+  "failures": 0,
+  "errors": 0,
+  "success": true,
+  "scenarios": [
+    {
+      "task_id": "task_01",
+      "assembly": "GRCh37",
+      "candidate_count": 10,
+      "causal_variant_rank": 1,
+      "top1_accuracy": 1,
+      "recall_at_5": 1,
+      "mrr": 1.0,
+      "gene_level_accuracy": 1,
+      "scenario": "rank_1"
+    },
+    {
+      "task_id": "task_01",
+      "assembly": "GRCh37",
+      "candidate_count": 10,
+      "causal_variant_rank": 2,
+      "top1_accuracy": 0,
+      "recall_at_5": 1,
+      "mrr": 0.5,
+      "gene_level_accuracy": 0,
+      "scenario": "rank_2"
+    },
+    {
+      "task_id": "task_01",
+      "assembly": "GRCh37",
+      "candidate_count": 10,
+      "causal_variant_rank": 5,
+      "top1_accuracy": 0,
+      "recall_at_5": 1,
+      "mrr": 0.2,
+      "gene_level_accuracy": 0,
+      "scenario": "rank_5"
+    },
+    {
+      "task_id": "task_01",
+      "assembly": "GRCh37",
+      "candidate_count": 10,
+      "causal_variant_rank": 10,
+      "top1_accuracy": 0,
+      "recall_at_5": 0,
+      "mrr": 0.1,
+      "gene_level_accuracy": 0,
+      "scenario": "rank_10"
+    },
+    {
+      "task_id": "task_01",
+      "assembly": "GRCh37",
+      "candidate_count": 10,
+      "causal_variant_rank": null,
+      "top1_accuracy": 0,
+      "recall_at_5": 0,
+      "mrr": 0.0,
+      "gene_level_accuracy": 0,
+      "scenario": "absent"
+    },
+    {
+      "task_id": "task_01",
+      "assembly": "GRCh37",
+      "candidate_count": 10,
+      "causal_variant_rank": null,
+      "top1_accuracy": 0,
+      "recall_at_5": 0,
+      "mrr": 0.0,
+      "gene_level_accuracy": 1,
+      "scenario": "gene_only_correct"
+    },
+    {
+      "task_id": "task_01",
+      "assembly": "GRCh37",
+      "candidate_count": 0,
+      "causal_variant_rank": null,
+      "top1_accuracy": 0,
+      "recall_at_5": 0,
+      "mrr": 0.0,
+      "gene_level_accuracy": 0,
+      "scenario": "empty"
+    },
+    {
+      "task_id": "task_02",
+      "assembly": "hg19",
+      "candidate_count": 10,
+      "causal_variant_rank": 1,
+      "top1_accuracy": 1,
+      "recall_at_5": 1,
+      "mrr": 1.0,
+      "gene_level_accuracy": 1,
+      "scenario": "rank_1"
+    },
+    {
+      "task_id": "task_02",
+      "assembly": "hg19",
+      "candidate_count": 10,
+      "causal_variant_rank": 2,
+      "top1_accuracy": 0,
+      "recall_at_5": 1,
+      "mrr": 0.5,
+      "gene_level_accuracy": 0,
+      "scenario": "rank_2"
+    },
+    {
+      "task_id": "task_02",
+      "assembly": "hg19",
+      "candidate_count": 10,
+      "causal_variant_rank": 5,
+      "top1_accuracy": 0,
+      "recall_at_5": 1,
+      "mrr": 0.2,
+      "gene_level_accuracy": 0,
+      "scenario": "rank_5"
+    },
+    {
+      "task_id": "task_02",
+      "assembly": "hg19",
+      "candidate_count": 10,
+      "causal_variant_rank": 10,
+      "top1_accuracy": 0,
+      "recall_at_5": 0,
+      "mrr": 0.1,
+      "gene_level_accuracy": 0,
+      "scenario": "rank_10"
+    },
+    {
+      "task_id": "task_02",
+      "assembly": "hg19",
+      "candidate_count": 10,
+      "causal_variant_rank": null,
+      "top1_accuracy": 0,
+      "recall_at_5": 0,
+      "mrr": 0.0,
+      "gene_level_accuracy": 0,
+      "scenario": "absent"
+    },
+    {
+      "task_id": "task_02",
+      "assembly": "hg19",
+      "candidate_count": 10,
+      "causal_variant_rank": null,
+      "top1_accuracy": 0,
+      "recall_at_5": 0,
+      "mrr": 0.0,
+      "gene_level_accuracy": 1,
+      "scenario": "gene_only_correct"
+    },
+    {
+      "task_id": "task_02",
+      "assembly": "hg19",
+      "candidate_count": 0,
+      "causal_variant_rank": null,
+      "top1_accuracy": 0,
+      "recall_at_5": 0,
+      "mrr": 0.0,
+      "gene_level_accuracy": 0,
+      "scenario": "empty"
+    }
+  ],
+  "real_input_preparation": {
+    "task_01": {
+      "prepared_input_verified": true,
+      "independent_projection_comparison": "identical across every original record and GT",
+      "records": 743154,
+      "samples": 17,
+      "all_record_non_GT_fields_removed": true,
+      "prompt_no_truth_identifiers": true,
+      "only_allowlisted_files_present": true,
+      "prepared_vcf_sha256": "f4be8bfc6412bcf0c6511b8eaabb6b5a8e33b0363145c7da872cf767eb047a0f",
+      "source_vcf_sha256": "ed1d589c61a10744dfbc39f16cee11553bcf617888782720fb829fc680a6125d"
+    },
+    "task_02": {
+      "prepared_input_verified": true,
+      "independent_projection_comparison": "identical across every original record and GT",
+      "records": 300036,
+      "samples": 4,
+      "all_record_non_GT_fields_removed": true,
+      "prompt_no_truth_identifiers": true,
+      "only_allowlisted_files_present": true,
+      "prepared_vcf_sha256": "dca8d3cbe5d258642face8cd0b24cc930e4a1190b501f0652f4c221ddfaa91ea",
+      "source_vcf_sha256": "db5fa80abb740672405bd57a5fc3daf1748f373e3f2589310fd3a5d9053b17b7"
+    }
+  },
+  "unittest_log": "test_case_prompt_does_not_reveal_truth (test_benchmark.BenchmarkTests.test_case_prompt_does_not_reveal_truth) ... ok\ntest_chr_alias_and_allele_case (test_benchmark.BenchmarkTests.test_chr_alias_and_allele_case) ... ok\ntest_cli_and_deterministic_bytes (test_benchmark.BenchmarkTests.test_cli_and_deterministic_bytes) ... ok\ntest_config_reference_case_consistency (test_benchmark.BenchmarkTests.test_config_reference_case_consistency) ... ok\ntest_contig_preservation (test_benchmark.BenchmarkTests.test_contig_preservation) ... ok\ntest_duplicate_normalized_variant_rejected (test_benchmark.BenchmarkTests.test_duplicate_normalized_variant_rejected) ... ok\ntest_empty_output (test_benchmark.BenchmarkTests.test_empty_output) ... ok\ntest_gene_only_correct (test_benchmark.BenchmarkTests.test_gene_only_correct) ... ok\ntest_indel_at_contig_start_and_multiline_fasta (test_benchmark.BenchmarkTests.test_indel_at_contig_start_and_multiline_fasta) ... ok\ntest_indel_left_alignment_and_ref_check (test_benchmark.BenchmarkTests.test_indel_left_alignment_and_ref_check) ... ok\ntest_indels_require_reference (test_benchmark.BenchmarkTests.test_indels_require_reference) ... ok\ntest_invalid_fields (test_benchmark.BenchmarkTests.test_invalid_fields) ... ok\ntest_invalid_shapes (test_benchmark.BenchmarkTests.test_invalid_shapes) ... ok\ntest_json_syntax_duplicate_keys_nan (test_benchmark.BenchmarkTests.test_json_syntax_duplicate_keys_nan) ... ok\ntest_no_hit (test_benchmark.BenchmarkTests.test_no_hit) ... ok\ntest_optional_gene (test_benchmark.BenchmarkTests.test_optional_gene) ... ok\ntest_padded_snv_and_duplicate (test_benchmark.BenchmarkTests.test_padded_snv_and_duplicate) ... ok\ntest_rank_1 (test_benchmark.BenchmarkTests.test_rank_1) ... ok\ntest_rank_10 (test_benchmark.BenchmarkTests.test_rank_10) ... ok\ntest_rank_2 (test_benchmark.BenchmarkTests.test_rank_2) ... ok\ntest_rank_5 (test_benchmark.BenchmarkTests.test_rank_5) ... ok\ntest_two_task_equal_weight (test_benchmark.BenchmarkTests.test_two_task_equal_weight) ... ok\n\n----------------------------------------------------------------------\nRan 22 tests in 0.734s\n\nOK\n",
+  "note": "Tests use artificial candidate lists only to validate the evaluator. These are not Agent benchmark scores or new biological cases."
+}
